@@ -29,8 +29,10 @@ import net.ezra.ui.theme.spacing
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen(navController: NavController) {
+    var name by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+
 
     ConstraintLayout(
         modifier = Modifier.fillMaxSize()
@@ -51,6 +53,8 @@ fun LoginScreen(navController: NavController) {
         ) {
             AuthHeader()
         }
+
+
 
 
         TextField(
@@ -96,6 +100,29 @@ fun LoginScreen(navController: NavController) {
                 imeAction = ImeAction.Done
             )
         )
+
+        TextField(
+            value = password,
+            onValueChange = {
+                password = it
+            },
+            label = {
+                Text(text = stringResource(id = R.string.name))
+            },
+            modifier = Modifier.constrainAs(refPassword) {
+                top.linkTo(refEmail.bottom, spacing.medium)
+                start.linkTo(parent.start, spacing.large)
+                end.linkTo(parent.end, spacing.large)
+                width = Dimension.fillToConstraints
+            },
+            keyboardOptions = KeyboardOptions(
+                capitalization = KeyboardCapitalization.None,
+                autoCorrect = false,
+                keyboardType = KeyboardType.Password,
+                imeAction = ImeAction.Done
+            )
+        )
+
 
         Button(
             onClick = {

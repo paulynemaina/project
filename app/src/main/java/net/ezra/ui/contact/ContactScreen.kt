@@ -57,12 +57,14 @@ fun ContactScreen(navController: NavHostController) {
 
             // Add other contact information here
             Text(text = "contact us through the following")
+
             Text(text = "phone number- 07600600")
            
            Icon(imageVector = Icons.Default.Email, contentDescription =""
-               
+
+
                )
-            Text(text = "eatelite@gmail.com", color = Color.Black)
+
             
 
 
